@@ -1,10 +1,16 @@
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLID } = graphql;
+const UserType = require('./user_type');
 
 const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    ping: { type: GraphQLID }
+    user: {
+      type: UserType,
+      resolve(parent, args, req) {
+        return req.user;
+      }
+    }
   }
 });
 
