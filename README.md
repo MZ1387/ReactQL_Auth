@@ -6,9 +6,9 @@ A React/GraphQL application to learn the fundamentals of React, Apollo Client an
 
 In the project directory, you can run:
 
-### `npm run start`
+### `npm run dev`
 
-Runs the server in development mode.
+Runs the application in development mode.
 
 ## Technologies Used
 
