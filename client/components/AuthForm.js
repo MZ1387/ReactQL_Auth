@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import { Link } from 'react-router';
-import CurrentUser from '../queries/CurrentUser';
-import Logout from '../mutations/Logout';
 
 class AuthForm extends Component {
     constructor(props) {
@@ -14,20 +10,27 @@ class AuthForm extends Component {
         };
     }
 
+    onSubmit(e) {
+        e.preventDefault();
+        const { email, password } = this.state;
+        this.props.onSubmit({ email, password });
+    }
+
     render() {
         return (
             <div className="row">
-                <form className="col s4">
+                <form className="col s4" onSubmit={this.onSubmit.bind(this)}>
                     <div className="input-field">
-                        <label>Email</label>
                         <input 
+                            placeholder="Email"
                             value={this.state.email}
                             onChange={e => this.setState({ email: e.target.value })}
                         />
                     </div>
                     <div className="input-field">
-                        <label>Password</label>
                         <input 
+                            placeholder="Password"
+                            type="password"
                             value={this.state.password}
                             onChange={e => this.setState({ password: e.target.value })}
                         />
